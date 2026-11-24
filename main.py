@@ -30,7 +30,7 @@ def count_sentences(text):
     return len(parts)
 
 
-def self_check(text):
+def validate_entry(text):
     """Validate the story against the competition gate. Returns a list
     of failure messages (empty when the story passes)."""
     failures = []
@@ -50,7 +50,7 @@ def self_check(text):
 
 
 def main():
-    failures = self_check(STORY)
+    failures = validate_entry(STORY)
     if failures:
         for failure in failures:
             print("SELF-CHECK FAIL: %s" % failure, file=sys.stderr)
