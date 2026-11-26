@@ -1,17 +1,16 @@
 import os
 
-STORY = "The embalmer pried tomorrow's bus ticket from the dead woman's fist. It was already punched for the seat beside his, and the stub bore his home stop."
+FIRST_SENTENCE = "I still wear my daughter's hospital bracelet because it is the only place her name is spelled right."
+SECOND_SENTENCE = "This morning it had tightened until my fingers went numb, and her birth date had changed to today."
+STORY = f"{FIRST_SENTENCE} {SECOND_SENTENCE}"
 
 
-def story_text():
-    return STORY
-
-
-def main():
-    output_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
+def main() -> None:
+    output_dir = os.getenv("MAKEFUN_OUTPUT_DIR") or "/output"
     os.makedirs(output_dir, exist_ok=True)
-    with open(os.path.join(output_dir, "entry.txt"), "wb") as handle:
-        handle.write(story_text().encode("utf-8"))
+    output_path = os.path.join(output_dir, "entry.txt")
+    with open(output_path, "w", encoding="utf-8", newline="") as handle:
+        handle.write(STORY)
 
 
 if __name__ == "__main__":
